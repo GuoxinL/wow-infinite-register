@@ -84,6 +84,21 @@ python register.py --config config_run.json --mode infinite --tag inf
 
 > `config_run.json` 是屏幕绑定 + 含个人名字的实测配置，**刻意不随仓库发布**——安装方需按 SKILL 流程在自己机器上自动定位生成。
 
+## 打包发布
+
+仓库内置 Makefile，一条命令生成可安装的 Skill zip：
+
+```bash
+make            # 生成 dist/wow-infinite-register-<version>.zip
+make list       # 预览将打包的文件
+make verify     # 校验 zip 内容
+make clean      # 清理 dist/
+```
+
+默认只打包 `SKILL.md`、`README.md`、`scripts/`、`references/`，并自动排除 `config_run*.json`、Python 缓存和系统文件；`evidence/`（约 13 MB 实测凭证）默认不打包，需要时执行 `make INCLUDE_EVIDENCE=1`。
+
+zip 内默认套一层 `wow-infinite-register/` 目录；若安装器要求 `SKILL.md` 直接位于根目录，使用 `make NO_PREFIX=1`。Windows 上没有 `python3` 时，追加 `PYTHON=python` 即可。
+
 ## 环境要求
 
 - Windows 10/11，真实桌面会话（非虚拟桌面 / 非纯 RDP 无头会话）
