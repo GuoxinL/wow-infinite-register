@@ -1,0 +1,20 @@
+# 屏幕绑定 + 含个人名字的实测配置，按 SKILL 流程在本机自动生成
+scripts/config_run.json
+scripts/config_run*.json
+
+# 运行期产物（evidence 下的实测凭证例外保留）
+*.jsonl
+!evidence/*.jsonl
+scripts/*.png
+loop_success.png
+!evidence/loop_success.png
+!evidence/success_detail.png
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# 系统
+.DS_Store
+Thumbs.db
